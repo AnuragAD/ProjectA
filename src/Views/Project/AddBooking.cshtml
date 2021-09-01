@@ -1,0 +1,136 @@
+﻿@model ProjectA_MVC.Models.Booking_Tbl
+@{
+    ViewBag.Title = "AddBooking";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
+    <link href="~/Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/JS/popper.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <img src="~/Images/Cargo1.jpeg" width="200px" height="100px" />
+            <div class="collapse navbar-collapse" id="navbarSupportContent">
+                <ul class="navbar-nav d-flex me-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Home", "Index", "Project") &nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("About Us", "About", "Project") &nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Terms", "Terms", "Project") &nbsp;&nbsp;
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+
+                    @if (@Session["role"].Equals("customer"))
+
+                    {
+                        <li class="nav-item active">
+                            <p>Hi <b>@Session["name"] </b></p>
+                        </li>
+                    }&nbsp; &nbsp;
+                    <li class="nav-item active">
+                        @Html.ActionLink("ViewBooking", "ViewBooking", "Project")&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Logout", "Logout", "Project")
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <h4><strong class="text-danger">@TempData["Message"]</strong></h4>
+        @using (Html.BeginForm("Summary", "Project", FormMethod.Post))
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <center>
+                                            <img width="100px" src="~/Images/Order.png" />
+                                        </center>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <center>
+                                            <h4>Add Order</h4>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <hr>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Customer Id</label>
+                                            @Html.TextBoxFor(x => x.Customer_Id, new { @class = "form-control",Value=Session["id"], @ReadOnly = "true", @style = "width=600px;" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Date</label>
+                                            @Html.TextBoxFor(x => x.Date, new { @class = "form-control", @type = "date", @style = "width=600px;" })
+                                            @Html.ValidationMessageFor(x => x.Date, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Time of PickUp</label>
+                                            @Html.TextBoxFor(x => x.Time, new { @class = "form-control", @type = "time", @style = "width=600px;" })
+                                            @Html.ValidationMessageFor(x => x.Time, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Weight</label>
+                                            @Html.TextBoxFor(x => x.Weight, new { @class = "form-control", id = "weight", @type = "number", @style = "width=600px;" })
+                                            @Html.ValidationMessageFor(x => x.Weight, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @*<label>Price</label>*@
+                                            @*@Html.TextBoxFor(x => x.Price, new { @class = "form-control", Value = "To be calculated", @ReadOnly = "true", @style = "width=600px;" })*@
+                                            @Html.TextBoxFor(x => x.Flag, new { Value = "True", @hidden = "true" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success btn-md" value="Add Order" style="width:150px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Terms";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About Page</title>
+    <link href="~/Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/JS/popper.min.js"></script>
+</head>
+<body>
+    <form>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <img src="~/Images/Cargo1.jpeg" width="200px" height="100px" />
+                <div class="collapse navbar-collapse" id="navbarSupportContent">
+                    <ul class="navbar-nav d-flex me-auto">
+                        <li class="nav-item active">
+                            @Html.ActionLink("Home", "Index", "Project") &nbsp;&nbsp;
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("About Us", "About", "Project") &nbsp;&nbsp;
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Terms", "Terms", "Project") &nbsp;&nbsp;
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <center><h2 class="text-primary">Terms and Conditions</h2></center>
+                        <hr />
+                        <p class="text-justify"><b class="text-info">Logistic Services</b>: Simply put, logistics services comprise all of the activity that takes place to get your shipment from its point of origin to its destination—otherwise known as the supply chain. Of course, what happens between shipment and arrival is typically a very complex process that requires perfect orchestration of several elements, including timing, transportation, packing, warehousing, inventory control, communication, digital tracking, and data management. That’s a lot to keep track of and most small businesses don’t have the manpower or bandwidth to stay on top of it all. That’s why many turn to a third-party vendor like Econo-Courier to handle their logistics services.</p>
+                        <p class="text-justify"><b class="text-info">Logistics Warehousing</b>: Warehousing is just one element of the logistics services described above, but that single element encompasses its own set of complex factors. This includes the flow of inventory, damaged goods, and customer returns. Warehouse logistics may also extend to warehouse pest control, safety policies, and worker management. In other words, warehouse logistics involves all the policies, procedures, and organizational tools necessary to keep your warehouse operations running smoothly.</p>
+                        <p class="text-justify"><b class="text-info">Expedited Delivery</b>: Expedited delivery is when a particular parcel or consignment is prioritized over others, shortening the time it takes to get to its destination. Expedited delivery services typically costs more, but if you have a package that needs to be delivered in less than three days’ time, the next day, or even same day, then it’s nice to have the option available to you.</p>
+                    </div>
+            </div>
+            </div>
+        </section>
+    </form>
+</body>
+</html>
+
+

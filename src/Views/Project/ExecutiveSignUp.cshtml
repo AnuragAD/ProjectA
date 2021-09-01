@@ -1,0 +1,142 @@
+﻿@model ProjectA_MVC.Models.Executive_Tbl
+@{
+    ViewBag.Title = "ExecutiveSignUp";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign Up Page</title>
+    <link href="~/Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/JS/popper.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <img src="~/Images/Cargo1.jpeg" width="200px" height="100px" />
+            <div class="collapse navbar-collapse" id="navbarSupportContent">
+                <ul class="navbar-nav d-flex me-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Home", "Index", "Project") &nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("About Us", "About", "Project") &nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Terms", "Terms", "Project") &nbsp;&nbsp;
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        @Html.ActionLink("User Login", "CustomerLogin", "Project") &nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Executive Login", "ExecutiveLogin", "Project") &nbsp;&nbsp;
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+    <h3><strong class="text-danger">@TempData["Message"]</strong></h3>
+    <div id="login">
+        @using (Html.BeginForm("ExecutiveSignUp", "Project", FormMethod.Post))
+        {
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <center>
+                                            <img src="~/Images/adminuser.png" width="100px" />
+                                        </center>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <center>
+                                            <h4>Executive Registration</h4>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <hr>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @style = "width=600px;" })
+                                            @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Age</label>
+                                            @Html.TextBoxFor(x => x.Age, new { @class = "form-control", @style = "width=600px;", @type = "number" })
+                                            @Html.ValidationMessageFor(x => x.Age, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Contact Number</label>
+                                            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @style = "width=600px;", @type = "phone" })
+                                            @Html.ValidationMessageFor(x => x.Phone, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email Id</label>
+                                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @style = "width=600px;", @type = "email" })
+                                            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @style = "width=600px;", @type = "password" })
+                                            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Confirm Password</label>
+                                            @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control", @style = "width=600px;", @type = "password" })
+                                            @Html.ValidationMessageFor(x => x.ConfirmPassword, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success btn-md" value="Submit" style="width:500px;" /> &nbsp;
+                                    <input type="reset" class="btn btn-warning btn-md" value="Reset" style="width:500px;" />
+                                </div>
+                            </div>
+                            @Html.ActionLink(">>>>>Customer SignUp", "CustomerSignUp", "Project") <br />
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

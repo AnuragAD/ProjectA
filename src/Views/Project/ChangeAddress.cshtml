@@ -1,0 +1,126 @@
+﻿@model ProjectA_MVC.Models.Customer_Tbl
+@{
+    ViewBag.Title = "ChangeAddress";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
+    <link href="~/Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/JS/popper.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="~/Images/Cargo1.jpeg" width="200" height="100" />
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportContent">
+                <ul class="navbar-nav d-flex me-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Home", "Project", "Index") &nbsp;&nbsp;
+
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("About Us", "Project", "Index") &nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Terms", "Project", "Index") &nbsp;&nbsp;
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <asp:LinkButton class="nav-link" ID="LinkButton6" runat="server" Text=""></asp:LinkButton>
+                    </li>
+                    @if (@Session["role"].Equals("customer"))
+                    {
+                        <li class="nav-item active">
+                            <p>Hi <b>@Session["name"] </b></p>
+
+                        </li>
+
+                    }
+                    &nbsp; &nbsp;
+                    <li class="nav-item active">
+                        @Html.ActionLink("Add Booking", "AddBooking", "Project")&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Add Booking", "AddBooking", "Project")&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Logout", "Logout", "Project")
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+    <h3><strong class="text-danger">@TempData["Message"]</strong></h3>
+    @using (Html.BeginForm("ChangeAddress", "Project", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <center>
+                                        <img src="~/Images/Address.jpeg" width="200px" />
+                                    </center>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <center>
+                                        <h4>Change Address</h4>
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Customer Id</label>
+                                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", Value = Session["id"], @ReadOnly = "true", @style = "width=600px;" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" value="@Session["name"]" readonly="true" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Current Address</label>
+                                    <input type="text" class="form-control" value="@Session["address"]" readonly="true" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>New Address</label>
+                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @style = "width=600px;" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success btn-md" value="Confirm" style="width:500px; margin-top:20px" />
+                                &nbsp;<input type="submit" class="btn btn-warning btn-md" value="Cancel" style="width: 500px; margin-top: 20px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+</body>
+</html>
+
+

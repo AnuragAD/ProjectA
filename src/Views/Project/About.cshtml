@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About Page</title>
+    <link href="~/Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/JS/popper.min.js"></script>
+</head>
+<body>
+    <form>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <img src="~/Images/Cargo1.jpeg" width="200px" height="100px" />
+                <div class="collapse navbar-collapse" id="navbarSupportContent">
+                    <ul class="navbar-nav d-flex me-auto">
+                        <li class="nav-item active">
+                            @Html.ActionLink("Home", "Index", "Project") &nbsp;&nbsp;
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("About Us", "About", "Project") &nbsp;&nbsp;
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Terms", "Terms", "Project") &nbsp;&nbsp;
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <section>
+            <div class="container">
+               <div class="row">
+                   <div class="col-md-8">
+                       <h2>WHO ARE WE?</h2><br />
+                       <p class="text-justify">Since its inception in 2011, Delhivery has become a leading logistics and supply chain services company in India. Our vision is to become the operating system for commerce in India, through a combination of world-class infrastructure, logistics operations of the highest quality and cutting-edge engineering and technology capabilities.</p>
+                   </div>
+                   <div class="col-md-4">
+                       <img src="~/Images/About1.jpeg" width="400px" height="300px" />
+                   </div>
+                </div>
+               <div class="row" ">
+                   <div class="col-md-4">
+                       <img src="~/Images/About2.jpg" hidden="true" />
+                       <img src="~/Images/About2.jpg" width="400px" height="300px" />
+                   </div>
+                   <div class="col-md-8">
+                       <h2>OUR MISSION</h2>
+                       <h4>SMALL WORLD</h4>
+                       <p class="text-justify">Delhivery provides products and services with the aim of building trust and improving the lives of consumers, small businesses, enterprises and our growing team of employees and partners. We are disrupting India’s logistics industry through our proprietary network design, infrastructure, partnerships, and engineering and technology capabilities. Delhivery brings unparalleled cost efficiency and pan-India reach to the businesses of over 17000 customers. We are driven by a mission to shrink time and distance, making the world a smaller place for our customers and over a billion consumers they serve.</p>
+                   </div>
+               </div>
+               </div>
+            
+        </section>
+    </form>
+</body>
+</html>
+

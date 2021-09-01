@@ -1,0 +1,122 @@
+﻿@model List<ProjectA_MVC.Models.Booking_Tbl>
+@{
+    ViewBag.Title = "PendingDelivery";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
+    <link href="~/Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/JS/popper.min.js"></script>
+</head>
+<body>
+    <form>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <img src="~/Images/Cargo1.jpeg" width="200" height="100" />
+                <div class="collapse navbar-collapse" id="navbarSupportContent">
+                    <ul class="navbar-nav d-flex me-auto">
+                        <li class="nav-item active">
+                            @Html.ActionLink("Home", "Index2", "Project") &nbsp;&nbsp;
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("About Us", "About", "Project") &nbsp;&nbsp;
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Terms", "Terms", "Project") &nbsp;&nbsp;
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            @if (@Session["role"].Equals("executive"))
+                            {
+                            <li class="nav-item active">
+                                <p>Hi <b>@Session["name"] </b></p>
+                            </li>
+                        }&nbsp; &nbsp;
+                            <li class="nav-item active">
+                                @Html.ActionLink("Back", "Index2", "Project")&nbsp;&nbsp;
+                            </li>
+                            <li class="nav-item active">
+                                @Html.ActionLink("Logout", "Logout", "Project")
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+            <h3><strong class="text-danger">@TempData["Message"]</strong></h3>
+            <center><h3 class="text-primary">Pending Deliveries</h3></center>
+            <div class="container text-center">
+                @if (Model.Count() > 0)
+                {
+                <table id="t01" class="table table-bordered table-hover">
+                    <thead>
+                    <th>Booking Id</th>
+                    <th>Customer Id</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Weight</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Customer_Id
+                            </td>
+                            <td>
+                                @item.Date
+                            </td>
+                            <td>
+                                @item.Time
+                            </td>
+                            <td>
+                                @item.Weight
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                            <td>
+                                @if (item.Flag == true)
+                                {
+                                    <label>Not Deliverd</label>
+                                }
+                                else
+                                {
+                                    <label> Deliverd</label>
+                                }
+                            </td>
+                            <td>
+                                @if (item.Flag == false)
+                                {
+                                    <a href="#" class="badge bg-primary">Delivered</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("DeliverOrder", new { item.Id, item.Customer_Id, item.Date, item.Time, item.Weight, item.Price, item.Flag })" id="hide" class="btn btn-danger btn-md ">Mark as Delivered</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                }
+            else
+            {
+                <h5 class="text-danger">No Pending Deliveries</h5>
+            }
+            </div>
+        </form>
+
+    </body>
+</html>
+
